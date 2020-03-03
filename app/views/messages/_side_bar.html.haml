@@ -1,0 +1,22 @@
+.side-bar
+  .side-bar__header
+    .side-bar__header__content
+      .side-bar__header__content--user-name
+        = current_user.name
+      %ul.side-bar__header__content__icon<
+        %li.side-bar__header__content__icon--new-group<
+          = link_to new_group_path, class: "side-bar__header__content__icon--new-group" do
+            %i.fas.fa-edit
+        %li.side-bar__header__content__icon--cog
+          = link_to edit_user_path(current_user), class: "side-bar__header__content__icon--cog" do
+            %i.fas.fa-cog
+            %span<>
+  .side-bar__lists
+    - current_user.groups.each do |group| 
+      = link_to group_messages_path(group) do
+        .side-bar__lists__group
+          .side-bar__lists__group--name
+            = group.name
+          .side-bar__lists__group--message
+            = group.show_last_message
+

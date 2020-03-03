@@ -1,0 +1,22 @@
+.main-chat
+  .main-chat__header
+    .main-chat__header__left
+      .main-chat__header__left--chat-title
+        = @group_name
+      .main-chat__header__left--chat-member
+        - @group_members.each do |member|
+          = member[:name]
+    = link_to edit_group_path(@group), class: "main-chat__header__right" do
+      Edit
+  
+  .main-chat__contents.messages
+    = render @messages
+  .main-chat__footer
+    .main-chat__footer__form-box
+      = form_for [@group, @message], class: "main-chat__footer__form-box__input" do |f|
+        = f.text_field :content, placeholder: "type a message", class: "main-chat__footer__form-box__input--message" 
+        = f.label :image, class: "main-chat__footer__form-box__input__img-btn" do
+          %i.far.fa-image.fa-2x
+          = f.file_field :image, class: "main-chat__footer__form-box__input__img-btn--hidden"
+          %span<>
+        = f.submit "Send", class: "form__submit main-chat__footer__form-box__input--send-btn"
