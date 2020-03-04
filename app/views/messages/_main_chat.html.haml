@@ -4,6 +4,7 @@
       .main-chat__header__left--chat-title
         = @group_name
       .main-chat__header__left--chat-member
+        Member:
         - @group_members.each do |member|
           = member[:name]
     = link_to edit_group_path(@group), class: "main-chat__header__right" do
