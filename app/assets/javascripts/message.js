@@ -82,7 +82,7 @@ $(function(){
         });        
         $('.messages').append(insertHTML);
         $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-        }
+      }
     })
     .fail(function() {
       alert('error');
